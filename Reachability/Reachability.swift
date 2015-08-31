@@ -61,6 +61,7 @@ public class Reachability: ReachabilityProtocol {
                    self.reachabilityStatus == .ViaCellular
         }
     }
+    
     typealias ReachabilityCallback = (status: ReachabilityStatus) -> Void
     
     private var reachabilityCallbacks = [String: ReachabilityCallback]()
@@ -71,18 +72,68 @@ public class Reachability: ReachabilityProtocol {
     var reachabilityReference: SCNetworkReachabilityRef!
     var reachabilityFlags: SCNetworkReachabilityFlags?
     
+    /**
+        Initialize reachability for general internet connection
+    */
+    public init?()
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_family = UInt8(AF_INET)
+
+        let address = withUnsafeMutablePointer(&zeroAddress) {
+            UnsafeMutablePointer<sockaddr>($0)
+        }
+        guard let reachabilityReference = SCNetworkReachabilityCreateWithAddress(nil, address) else {
+            return nil;
+        }
+        
+        self.reachabilityReference = reachabilityReference
+        self.updateCurrentReachabilityStatus()
+    }
+    
+    public init?(withAddress address: UnsafeMutablePointer<sockaddr_in>) {
+
+        let sockaddrAddress = UnsafeMutablePointer<sockaddr>(address)
+
+        guard let reachabilityReference = SCNetworkReachabilityCreateWithAddress(nil, sockaddrAddress) else {
+            return nil;
+        }
+        
+        self.reachabilityReference = reachabilityReference
+        self.updateCurrentReachabilityStatus()
+    }
+
+    /**
+    Initialize reachability checking for connection to the specified host name.
+        
+    @parameter withHostName the host name of the server to check for connectivity
+    */
     public init?(withHostName hostName: String)
     {
         guard let reachabilityReference = SCNetworkReachabilityCreateWithName(nil, hostName) else {
             return nil;
         }
-
+        
         self.reachabilityReference = reachabilityReference
+        self.updateCurrentReachabilityStatus()
     }
+
+    
     
     deinit {
         self.stopNotifier()
         self.reachabilityReference = nil;
+    }
+    
+    public func updateCurrentReachabilityStatus() -> ReachabilityStatus {
+    
+        var flags = SCNetworkReachabilityFlags()
+        
+        if SCNetworkReachabilityGetFlags(self.reachabilityReference, &flags) {
+            self.reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
+        }
+        
+        return self.reachabilityStatus
     }
     
     public func startNotifier() -> Bool {
