@@ -27,22 +27,34 @@ class ViewController: UIViewController {
         self.connectionStatusLight.layer.borderColor = UIColor.blackColor().CGColor
         self.connectionStatusLight.backgroundColor = UIColor.whiteColor()
         
-        self.reachability = Reachability(withHostName: "http://www.willowtreeapps.com")
+        self.reachability = Reachability(withURL: NSURL(string: "http://www.willowtreeapps.com")!)
+        
+        // Use the following for generic internet reachability
+        // self.reachability = Reachability()
+        
         self.reachability?.startNotifier()
-        self.reachability?.addReachabilityCallback(withIdentifier: "ViewController") { (status: ReachabilityStatus) -> Void in
-            dispatch_async(dispatch_get_main_queue()) {
-                switch status {
-                case .NotReachable:
-                    self.connectionStatusLight.backgroundColor = UIColor.redColor()
-                case .ViaWifi, .ViaCellular:
-                    self.connectionStatusLight.backgroundColor = UIColor.greenColor()
-                default:
-                    self.connectionStatusLight.backgroundColor = UIColor.whiteColor()
-                }
-                self.connectionStatusFlagLabel.text = status.description()
-            }
+        
+        
+        self.reachability?.addReachabilityCallback(withIdentifier: "ViewController", self.setViewStateForStatus)
+        
+        if let reachability = self.reachability {
+            self.setViewStateForStatus(reachability.reachabilityStatus)
         }
     }
 
+    func setViewStateForStatus(status: ReachabilityStatus) {
+        dispatch_async(dispatch_get_main_queue()) {
+            switch status {
+            case .NotReachable:
+                self.connectionStatusLight.backgroundColor = UIColor.redColor()
+            case .ViaWifi, .ViaCellular:
+                self.connectionStatusLight.backgroundColor = UIColor.greenColor()
+            default:
+                self.connectionStatusLight.backgroundColor = UIColor.whiteColor()
+            }
+            self.connectionStatusFlagLabel.text = status.description()
+        }
+
+    }
 }
 

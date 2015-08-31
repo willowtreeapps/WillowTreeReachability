@@ -78,11 +78,14 @@ public class Reachability: ReachabilityProtocol {
     public init?()
     {
         var zeroAddress = sockaddr_in()
+        bzero(&zeroAddress, sizeofValue(zeroAddress))
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
         zeroAddress.sin_family = UInt8(AF_INET)
-
-        let address = withUnsafeMutablePointer(&zeroAddress) {
-            UnsafeMutablePointer<sockaddr>($0)
-        }
+        
+        let address_in = UnsafeMutablePointer<sockaddr_in>.alloc(1)
+        address_in.initialize(zeroAddress)
+        let address = UnsafeMutablePointer<sockaddr>(address_in)
+        
         guard let reachabilityReference = SCNetworkReachabilityCreateWithAddress(nil, address) else {
             return nil;
         }
@@ -104,13 +107,14 @@ public class Reachability: ReachabilityProtocol {
     }
 
     /**
-    Initialize reachability checking for connection to the specified host name.
+    Initialize reachability checking for connection to the specified host name with URL
         
-    @parameter withHostName the host name of the server to check for connectivity
+    @parameter withURL the URL of the server to connect to
     */
-    public init?(withHostName hostName: String)
+    public init?(withURL URL: NSURL)
     {
-        guard let reachabilityReference = SCNetworkReachabilityCreateWithName(nil, hostName) else {
+        guard let host = URL.host,
+              let reachabilityReference = SCNetworkReachabilityCreateWithName(nil, host) else {
             return nil;
         }
         
@@ -143,7 +147,11 @@ public class Reachability: ReachabilityProtocol {
         self.unsafeSelfPointer = UnsafeMutablePointer<Void>(ptr)
         networkReachabilityContext.info = self.unsafeSelfPointer!
         
-        if SCNetworkReachabilitySetCallback(self.reachabilityReference, self.internalReachabilityCallback(), &networkReachabilityContext) {
+        let unsafeContextPointer = UnsafeMutablePointer<SCNetworkReachabilityContext>.alloc(1)
+        unsafeContextPointer.initialize(networkReachabilityContext)
+        
+        
+        if SCNetworkReachabilitySetCallback(self.reachabilityReference, self.internalReachabilityCallback(), unsafeContextPointer) {
             if SCNetworkReachabilityScheduleWithRunLoop(self.reachabilityReference, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode) {
                 return true
             }
