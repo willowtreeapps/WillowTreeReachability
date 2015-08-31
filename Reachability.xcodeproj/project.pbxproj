@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03675E0A1B947D7F00FD589A /* ReachabilityStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03675E091B947D7F00FD589A /* ReachabilityStatusTests.swift */; settings = {ASSET_TAGS = (); }; };
 		0382BAF91B90B98900849DDA /* ReachabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BAF81B90B98900849DDA /* ReachabilityTests.swift */; };
 		0382BB0E1B90BA1000849DDA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB041B90BA1000849DDA /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
 		0382BB0F1B90BA1000849DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB061B90BA1000849DDA /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03675E091B947D7F00FD589A /* ReachabilityStatusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityStatusTests.swift; sourceTree = "<group>"; };
 		0382BAE01B90B98900849DDA /* Reachability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reachability.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0382BAF41B90B98900849DDA /* ReachabilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReachabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0382BAF81B90B98900849DDA /* ReachabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityTests.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				0382BAF81B90B98900849DDA /* ReachabilityTests.swift */,
 				0382BAFA1B90B98900849DDA /* Info.plist */,
+				03675E091B947D7F00FD589A /* ReachabilityStatusTests.swift */,
 			);
 			path = ReachabilityTests;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03675E0A1B947D7F00FD589A /* ReachabilityStatusTests.swift in Sources */,
 				0382BAF91B90B98900849DDA /* ReachabilityTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

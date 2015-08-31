@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         
         self.reachability = Reachability(withHostName: "http://www.willowtreeapps.com")
         self.reachability?.startNotifier()
-        self.reachability?.reachabilityCallback = {(status: Reachability.ReachabilityStatus) in
+        self.reachability?.addReachabilityCallback(withIdentifier: "ViewController") { (status: ReachabilityStatus) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
                 switch status {
                 case .NotReachable:
@@ -41,7 +41,6 @@ class ViewController: UIViewController {
                 }
                 self.connectionStatusFlagLabel.text = status.description()
             }
-           
         }
     }
 

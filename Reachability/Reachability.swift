@@ -6,63 +6,70 @@
 import Foundation
 import SystemConfiguration
 
-public let ReachabilityChangedNotification = "ReachabilityChangedNotification"
-
 protocol ReachabilityProtocol
 {
     var isReachable: Bool { get }
 }
 
-public class Reachability {
-
-    public enum ReachabilityStatus: Int {
-        case Unknown
-        case NotReachable
-        case ViaWifi
-        case ViaCellular
+public enum ReachabilityStatus: Int {
+    case Unknown
+    case NotReachable
+    case ViaWifi
+    case ViaCellular
+    
+    public static func statusForReachabilityFlags(flags: SCNetworkReachabilityFlags) -> ReachabilityStatus {
         
-        public static func statusForReachabilityFlags(flags: SCNetworkReachabilityFlags) -> ReachabilityStatus {
-            
-            print(flags)
-            let reachable = flags.contains(.Reachable)
-            let requiresConnection = flags.contains(.ConnectionRequired)
-            let supportsAutomaticConnection = (flags.contains(.ConnectionOnDemand) || flags.contains(.ConnectionOnTraffic))
-            let requiresUserInteraction = flags.contains(.InterventionRequired)
-            let networkReachable = (reachable &&
-                (!requiresConnection || (supportsAutomaticConnection && !requiresUserInteraction)))
-            
-            if !networkReachable {
-                return .NotReachable
-            } else if flags.contains(.IsWWAN) {
-                return .ViaCellular
-            } else {
-                return .ViaWifi
-            }
-        }
+        print(flags)
+        let reachable = flags.contains(.Reachable)
+        let requiresConnection = flags.contains(.ConnectionRequired)
+        let supportsAutomaticConnection = (flags.contains(.ConnectionOnDemand) || flags.contains(.ConnectionOnTraffic))
+        let requiresUserInteraction = flags.contains(.InterventionRequired)
+        let networkReachable = (reachable &&
+            (!requiresConnection || (supportsAutomaticConnection && !requiresUserInteraction)))
         
-        public func description() -> String
-        {
-            switch self {
-            case .Unknown:
-                return "Unknown"
-            case .NotReachable:
-                return "Not reachable"
-            case .ViaCellular:
-                return "Reachable via cellular"
-            case .ViaWifi:
-                return "Reachable via wifi"
-            }
+        if !networkReachable {
+            return .NotReachable
+        } else if flags.contains(.IsWWAN) {
+            return .ViaCellular
+        } else {
+            return .ViaWifi
         }
     }
     
-    public var reachabilityCallback: ((status: ReachabilityStatus) -> Void)?
+    public func description() -> String
+    {
+        switch self {
+        case .Unknown:
+            return "Unknown"
+        case .NotReachable:
+            return "Not reachable"
+        case .ViaCellular:
+            return "Reachable via cellular"
+        case .ViaWifi:
+            return "Reachable via wifi"
+        }
+    }
+}
+
+public class Reachability: ReachabilityProtocol {
     
+    public var reachabilityStatus: ReachabilityStatus = .Unknown
+    
+    public var isReachable: Bool {
+        get {
+            return self.reachabilityStatus == .ViaWifi ||
+                   self.reachabilityStatus == .ViaCellular
+        }
+    }
+    typealias ReachabilityCallback = (status: ReachabilityStatus) -> Void
+    
+    private var reachabilityCallbacks = [String: ReachabilityCallback]()
     private var unsafeSelfPointer: UnsafeMutablePointer<Void>?
+    
+    private let callbackQueue = dispatch_queue_create("com.willowtreeapps.Reachability", DISPATCH_QUEUE_SERIAL)
     
     var reachabilityReference: SCNetworkReachabilityRef!
     var reachabilityFlags: SCNetworkReachabilityFlags?
-    
-    public var reachabilityStatus: ReachabilityStatus = .Unknown
     
     public init?(withHostName hostName: String)
     {
@@ -103,6 +110,14 @@ public class Reachability {
         self.unsafeSelfPointer = nil
     }
     
+    public func addReachabilityCallback(withIdentifier identifier: String, _ completion: ((status: ReachabilityStatus) -> Void)) {
+        self.reachabilityCallbacks[identifier] = completion;
+    }
+    
+    public func removeReachabilityCallback(withIdentifier identifier: String) {
+        self.reachabilityCallbacks.removeValueForKey(identifier)
+    }
+    
     private func internalReachabilityCallback() -> SCNetworkReachabilityCallBack {
         
         let callback: SCNetworkReachabilityCallBack = {(target: SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutablePointer<Void>) in
@@ -110,8 +125,14 @@ public class Reachability {
             let reachabiltyReference = UnsafeMutablePointer<Reachability>(info)
             let reachability = reachabiltyReference.memory
 
-            reachability.reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
-            reachability.reachabilityCallback?(status: reachability.reachabilityStatus)
+            let reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
+            reachability.reachabilityStatus = reachabilityStatus
+            
+            for callback in reachability.reachabilityCallbacks.values {
+                dispatch_async(reachability.callbackQueue) {
+                    callback(status: reachability.reachabilityStatus)
+                }
+            }
         }
         
         return callback
