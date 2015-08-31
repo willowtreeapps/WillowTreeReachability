@@ -6,12 +6,7 @@
 import Foundation
 import SystemConfiguration
 
-protocol ReachabilityProtocol
-{
-    var isReachable: Bool { get }
-}
-
-public enum ReachabilityStatus: Int {
+public enum ReachabilityStatus: Int, CustomStringConvertible {
     /// Unknown network state
     case Unknown
     
@@ -31,9 +26,7 @@ public enum ReachabilityStatus: Int {
     
         @return the reachability status
     */
-    public static func statusForReachabilityFlags(flags: SCNetworkReachabilityFlags) -> ReachabilityStatus {
-        
-        print(flags)
+    static func statusForReachabilityFlags(flags: SCNetworkReachabilityFlags) -> ReachabilityStatus {
         let reachable = flags.contains(.Reachable)
         let requiresConnection = flags.contains(.ConnectionRequired)
         let supportsAutomaticConnection = (flags.contains(.ConnectionOnDemand) || flags.contains(.ConnectionOnTraffic))
@@ -50,22 +43,23 @@ public enum ReachabilityStatus: Int {
         }
     }
     
-    public func description() -> String
-    {
-        switch self {
-        case .Unknown:
-            return "Unknown"
-        case .NotReachable:
-            return "Not reachable"
-        case .ViaCellular:
-            return "Reachable via cellular"
-        case .ViaWifi:
-            return "Reachable via wifi"
+    public var description: String {
+        get {
+            switch self {
+            case .Unknown:
+                return "Unknown"
+            case .NotReachable:
+                return "Not reachable"
+            case .ViaCellular:
+                return "Reachable via cellular"
+            case .ViaWifi:
+                return "Reachable via wifi"
+            }
         }
     }
 }
 
-public class Reachability: ReachabilityProtocol {
+public class Reachability {
     
     /// THe current reachability status
     public var reachabilityStatus: ReachabilityStatus = .Unknown
@@ -83,7 +77,7 @@ public class Reachability: ReachabilityProtocol {
     private var reachabilityCallbacks = [String: ReachabilityCallback]()
     private var unsafeSelfPointer: UnsafeMutablePointer<Void>?
     
-    private let callbackQueue = dispatch_queue_create("com.willowtreeapps.Reachability", DISPATCH_QUEUE_SERIAL)
+    private let callbackQueue = dispatch_queue_create("com.willowtreeapps.Reachability", DISPATCH_QUEUE_CONCURRENT)
     
     var reachabilityReference: SCNetworkReachabilityRef!
     var reachabilityFlags: SCNetworkReachabilityFlags?
@@ -158,11 +152,7 @@ public class Reachability: ReachabilityProtocol {
         self.unsafeSelfPointer = UnsafeMutablePointer<Void>(ptr)
         networkReachabilityContext.info = self.unsafeSelfPointer!
         
-        let unsafeContextPointer = UnsafeMutablePointer<SCNetworkReachabilityContext>.alloc(1)
-        unsafeContextPointer.initialize(networkReachabilityContext)
-        
-        
-        if SCNetworkReachabilitySetCallback(self.reachabilityReference, self.internalReachabilityCallback(), unsafeContextPointer) {
+        if SCNetworkReachabilitySetCallback(self.reachabilityReference, self.internalReachabilityCallback(), &networkReachabilityContext) {
             if SCNetworkReachabilityScheduleWithRunLoop(self.reachabilityReference, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode) {
                 return true
             }
@@ -210,15 +200,13 @@ public class Reachability: ReachabilityProtocol {
     
         @return the reachability status retrieved from system configuration
     */
-    private func updateCurrentReachabilityStatus() -> ReachabilityStatus {
+    private func updateCurrentReachabilityStatus() -> Void {
         
         var flags = SCNetworkReachabilityFlags()
         
         if SCNetworkReachabilityGetFlags(self.reachabilityReference, &flags) {
             self.reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
         }
-        
-        return self.reachabilityStatus
     }
 
     /// Internal callback called by the system configuration framework

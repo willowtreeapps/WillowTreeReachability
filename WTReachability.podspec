@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "WillowTree, Inc." }
+  s.author             = "WillowTree, Inc."
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #

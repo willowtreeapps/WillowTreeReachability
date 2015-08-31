@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             default:
                 self.connectionStatusLight.backgroundColor = UIColor.whiteColor()
             }
-            self.connectionStatusFlagLabel.text = status.description()
+            self.connectionStatusFlagLabel.text = status.description
         }
 
     }
