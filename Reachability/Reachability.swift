@@ -75,7 +75,7 @@ public class Reachability {
     typealias ReachabilityCallback = (status: ReachabilityStatus) -> Void
     
     private var reachabilityCallbacks = [String: ReachabilityCallback]()
-    private var unsafeSelfPointer: UnsafeMutablePointer<Void>?
+    private var unsafeSelfPointer = UnsafeMutablePointer<Reachability>.alloc(1)
     
     private let callbackQueue = dispatch_queue_create("com.willowtreeapps.Reachability", DISPATCH_QUEUE_CONCURRENT)
     
@@ -137,6 +137,7 @@ public class Reachability {
 
     deinit {
         self.reachabilityReference = nil;
+        self.unsafeSelfPointer.dealloc(1)
     }
     
     /**
@@ -146,10 +147,8 @@ public class Reachability {
     */
     public func startNotifier() -> Bool {
         var networkReachabilityContext = SCNetworkReachabilityContext()
-        let ptr = UnsafeMutablePointer<Reachability>.alloc(1)
-        ptr.initialize(self)
-        self.unsafeSelfPointer = UnsafeMutablePointer<Void>(ptr)
-        networkReachabilityContext.info = self.unsafeSelfPointer!
+        self.unsafeSelfPointer.initialize(self)
+        networkReachabilityContext.info = UnsafeMutablePointer<Void>(self.unsafeSelfPointer)
         
         if SCNetworkReachabilitySetCallback(self.reachabilityReference, self.internalReachabilityCallback(), &networkReachabilityContext) {
             if SCNetworkReachabilityScheduleWithRunLoop(self.reachabilityReference, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode) {
@@ -168,8 +167,7 @@ public class Reachability {
             SCNetworkReachabilityUnscheduleFromRunLoop(self.reachabilityReference, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode)
         }
         
-        self.unsafeSelfPointer?.destroy(1)
-        self.unsafeSelfPointer = nil
+        self.unsafeSelfPointer.destroy(1)
     }
     
     /**
