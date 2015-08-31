@@ -12,11 +12,25 @@ protocol ReachabilityProtocol
 }
 
 public enum ReachabilityStatus: Int {
+    /// Unknown network state
     case Unknown
+    
+    /// Network is not reachable
     case NotReachable
+    
+    /// Network is reachable via Wifi
     case ViaWifi
+    
+    /// Network is reachable via cellular connection
     case ViaCellular
     
+    /**
+        Returns the ReachabilityStatus based on the passed in reachability flags.
+        
+        @param flags the SCNetworkReachablityFlags to check for connectivity
+    
+        @return the reachability status
+    */
     public static func statusForReachabilityFlags(flags: SCNetworkReachabilityFlags) -> ReachabilityStatus {
         
         print(flags)
@@ -53,8 +67,10 @@ public enum ReachabilityStatus: Int {
 
 public class Reachability: ReachabilityProtocol {
     
+    /// THe current reachability status
     public var reachabilityStatus: ReachabilityStatus = .Unknown
     
+    /// Returns true if the network is reachable in either wifi or cellular
     public var isReachable: Bool {
         get {
             return self.reachabilityStatus == .ViaWifi ||
@@ -94,6 +110,9 @@ public class Reachability: ReachabilityProtocol {
         self.updateCurrentReachabilityStatus()
     }
     
+    /**
+        Initialize reachability for the specified socket address.
+    */
     public init?(withAddress address: UnsafeMutablePointer<sockaddr_in>) {
 
         let sockaddrAddress = UnsafeMutablePointer<sockaddr>(address)
@@ -107,9 +126,9 @@ public class Reachability: ReachabilityProtocol {
     }
 
     /**
-    Initialize reachability checking for connection to the specified host name with URL
+        Initialize reachability checking for connection to the specified host name with URL
         
-    @parameter withURL the URL of the server to connect to
+        @parameter withURL the URL of the server to connect to
     */
     public init?(withURL URL: NSURL)
     {
@@ -122,24 +141,16 @@ public class Reachability: ReachabilityProtocol {
         self.updateCurrentReachabilityStatus()
     }
 
-    
-    
     deinit {
         self.stopNotifier()
         self.reachabilityReference = nil;
     }
     
-    public func updateCurrentReachabilityStatus() -> ReachabilityStatus {
-    
-        var flags = SCNetworkReachabilityFlags()
+    /**
+        Starts the asynchronous monitoring of network reachability.
         
-        if SCNetworkReachabilityGetFlags(self.reachabilityReference, &flags) {
-            self.reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
-        }
-        
-        return self.reachabilityStatus
-    }
-    
+        @return true if the notifications started successfully
+    */
     public func startNotifier() -> Bool {
         var networkReachabilityContext = SCNetworkReachabilityContext()
         let ptr = UnsafeMutablePointer<Reachability>.alloc(1)
@@ -160,6 +171,9 @@ public class Reachability: ReachabilityProtocol {
         return false
     }
     
+    /**
+        Stops the current monitoring of network status.
+    */
     public func stopNotifier() {
         if self.reachabilityReference != nil {
             SCNetworkReachabilityUnscheduleFromRunLoop(self.reachabilityReference, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode)
@@ -169,14 +183,45 @@ public class Reachability: ReachabilityProtocol {
         self.unsafeSelfPointer = nil
     }
     
-    public func addReachabilityCallback(withIdentifier identifier: String, _ completion: ((status: ReachabilityStatus) -> Void)) {
-        self.reachabilityCallbacks[identifier] = completion;
+    /**
+        Add a callback listener with the specified identifier that gets called any time the network
+        status changes.
+
+        @param withIdentifier the identifier to use with this callback
+        @param callback the callback to call when the network status changes
+    */
+    public func addReachabilityCallback(withIdentifier identifier: String, _ callback: ((status: ReachabilityStatus) -> Void)) {
+        self.reachabilityCallbacks[identifier] = callback;
     }
     
+    /**
+        Removes a specified callback listener.
+    
+        @param withIdentifier the identifier to use with this callback
+    */
+
     public func removeReachabilityCallback(withIdentifier identifier: String) {
         self.reachabilityCallbacks.removeValueForKey(identifier)
     }
     
+    /**
+        Updates the current reachability status for the current instance using the reachability 
+        reference.
+    
+        @return the reachability status retrieved from system configuration
+    */
+    private func updateCurrentReachabilityStatus() -> ReachabilityStatus {
+        
+        var flags = SCNetworkReachabilityFlags()
+        
+        if SCNetworkReachabilityGetFlags(self.reachabilityReference, &flags) {
+            self.reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
+        }
+        
+        return self.reachabilityStatus
+    }
+
+    /// Internal callback called by the system configuration framework
     private func internalReachabilityCallback() -> SCNetworkReachabilityCallBack {
         
         let callback: SCNetworkReachabilityCallBack = {(target: SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutablePointer<Void>) in

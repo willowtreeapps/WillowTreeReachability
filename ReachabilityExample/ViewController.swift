@@ -19,6 +19,10 @@ class ViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    deinit {
+        self.reachability?.stopNotifier()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
