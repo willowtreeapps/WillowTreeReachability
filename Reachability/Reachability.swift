@@ -136,7 +136,6 @@ public class Reachability {
     }
 
     deinit {
-        self.stopNotifier()
         self.reachabilityReference = nil;
     }
     
