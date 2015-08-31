@@ -78,6 +78,7 @@ public class Reachability {
     private var unsafeSelfPointer = UnsafeMutablePointer<Reachability>.alloc(1)
     
     private let callbackQueue = dispatch_queue_create("com.willowtreeapps.Reachability", DISPATCH_QUEUE_CONCURRENT)
+    private var monitoringStarted = false;
     
     var reachabilityReference: SCNetworkReachabilityRef!
     var reachabilityFlags: SCNetworkReachabilityFlags?
@@ -146,6 +147,12 @@ public class Reachability {
         @return true if the notifications started successfully
     */
     public func startNotifier() -> Bool {
+        guard !self.monitoringStarted else {
+            return true
+        }
+        
+        self.monitoringStarted = true
+        
         var networkReachabilityContext = SCNetworkReachabilityContext()
         self.unsafeSelfPointer.initialize(self)
         networkReachabilityContext.info = UnsafeMutablePointer<Void>(self.unsafeSelfPointer)
@@ -163,11 +170,17 @@ public class Reachability {
         Stops the current monitoring of network status.
     */
     public func stopNotifier() {
+        
+        guard monitoringStarted else {
+            return;
+        }
+        
         if self.reachabilityReference != nil {
             SCNetworkReachabilityUnscheduleFromRunLoop(self.reachabilityReference, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode)
         }
         
         self.unsafeSelfPointer.destroy(1)
+        monitoringStarted = false
     }
     
     /**
