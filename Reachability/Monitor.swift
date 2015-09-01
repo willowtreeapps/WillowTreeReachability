@@ -10,6 +10,7 @@ public protocol NetworkStatusSubscriber: class {
     func networkStatusChanged(status: ReachabilityStatus)
 }
 
+/// Enumeration representing the current network connection status
 public enum ReachabilityStatus: Int, CustomStringConvertible {
     /// Unknown network state
     case Unknown
@@ -23,13 +24,10 @@ public enum ReachabilityStatus: Int, CustomStringConvertible {
     /// Network is reachable via cellular connection
     case ViaCellular
     
-    /**
-        Returns the ReachabilityStatus based on the passed in reachability flags.
-        
-        @param flags the SCNetworkReachablityFlags to check for connectivity
-    
-        @return the reachability status
-    */
+    /// Returns the ReachabilityStatus based on the passed in reachability flags.
+    ///
+    /// - parameter flags: the SCNetworkReachablityFlags to check for connectivity
+    /// - returns: the reachability status
     static func statusForReachabilityFlags(flags: SCNetworkReachabilityFlags) -> ReachabilityStatus {
         let reachable = flags.contains(.Reachable)
         let requiresConnection = flags.contains(.ConnectionRequired)
@@ -47,6 +45,7 @@ public enum ReachabilityStatus: Int, CustomStringConvertible {
         }
     }
     
+    /// Printable description of the given status
     public var description: String {
         get {
             switch self {
@@ -63,30 +62,40 @@ public enum ReachabilityStatus: Int, CustomStringConvertible {
     }
 }
 
-public class ReachabilitySubscription {
-    weak var subscriber: NetworkStatusSubscriber?
-    weak var reachability: Reachability?
+/// Subscription token used to keep a subscription to the network montitoring alive.
+public class NetworkStatusSubscription {
     
-    init(subscriber: NetworkStatusSubscriber?, reachability: Reachability?)
+    weak var subscriber: NetworkStatusSubscriber?
+    weak var monitor: Monitor?
+    
+    init(subscriber: NetworkStatusSubscriber?, monitor: Monitor?)
     {
         self.subscriber = subscriber
-        self.reachability = reachability
+        self.monitor = monitor
     }
     
     deinit {
-        self.reachability?.removeReachabilitySubscription(self)
+        self.monitor?.removeReachabilitySubscription(self)
     }
 }
 
-public class Reachability {
+public class Monitor {
     
-    /// The current reachability status
-    public var reachabilityStatus: ReachabilityStatus = .Unknown
+    /// Returns the current reachability status
+    public var reachabilityStatus: ReachabilityStatus {
+        get {
+            var flags = SCNetworkReachabilityFlags()
+            
+            if SCNetworkReachabilityGetFlags(self.reachabilityReference, &flags) {
+                return ReachabilityStatus.statusForReachabilityFlags(flags)
+            }
+            
+            return .Unknown
+        }
+    }
     
-    typealias ReachabilityCallback = (status: ReachabilityStatus) -> Void
-    
-    private var reachabilitySubscriptions = [ReachabilitySubscription]()
-    private var unsafeSelfPointer = UnsafeMutablePointer<Reachability>.alloc(1)
+    var reachabilitySubscriptions = [NetworkStatusSubscriber]()
+    var unsafeSelfPointer = UnsafeMutablePointer<Monitor>.alloc(1)
     
     private let callbackQueue = dispatch_queue_create("com.willowtreeapps.Reachability", DISPATCH_QUEUE_CONCURRENT)
     private var monitoringStarted = false;
@@ -94,10 +103,8 @@ public class Reachability {
     var reachabilityReference: SCNetworkReachabilityRef!
     var reachabilityFlags: SCNetworkReachabilityFlags?
     
-    /**
-        Initialize reachability for general internet connection
-    */
-    public init?()
+    /// Initialize monitoring for general internet connection
+    convenience public init?()
     {
         var zeroAddress = sockaddr_in()
         bzero(&zeroAddress, sizeofValue(zeroAddress))
@@ -106,19 +113,13 @@ public class Reachability {
         
         let address_in = UnsafeMutablePointer<sockaddr_in>.alloc(1)
         address_in.initialize(zeroAddress)
-        let address = UnsafeMutablePointer<sockaddr>(address_in)
         
-        guard let reachabilityReference = SCNetworkReachabilityCreateWithAddress(nil, address) else {
-            return nil;
-        }
-        
-        self.reachabilityReference = reachabilityReference
-        self.updateCurrentReachabilityStatus()
+        self.init(withAddress: address_in)
     }
     
-    /**
-        Initialize reachability for the specified socket address.
-    */
+    /// Initialize monitoring for the specified socket address.
+    ///
+    /// - parameter withAddress: the socket address to use when checking reachability
     public init?(withAddress address: UnsafeMutablePointer<sockaddr_in>) {
 
         let sockaddrAddress = UnsafeMutablePointer<sockaddr>(address)
@@ -128,23 +129,17 @@ public class Reachability {
         }
         
         self.reachabilityReference = reachabilityReference
-        self.updateCurrentReachabilityStatus()
     }
 
-    /**
-        Initialize reachability checking for connection to the specified host name with URL
-        
-        @parameter withURL the URL of the server to connect to
-    */
-    public init?(withURL URL: NSURL)
-    {
+    /// Initialize reachability checking for connection to the specified host name with URL
+    /// - parameter withURL: the URL of the server to connect to
+    public init?(withURL URL: NSURL) {
         guard let host = URL.host,
               let reachabilityReference = SCNetworkReachabilityCreateWithName(nil, host) else {
             return nil;
         }
         
         self.reachabilityReference = reachabilityReference
-        self.updateCurrentReachabilityStatus()
     }
 
     deinit {
@@ -152,12 +147,10 @@ public class Reachability {
         self.unsafeSelfPointer.dealloc(1)
     }
     
-    /**
-        Starts the asynchronous monitoring of network reachability.
-        
-        @return true if the notifications started successfully
-    */
-    public func startNotifier() -> Bool {
+    /// Starts the asynchronous monitoring of network reachability.
+    ///
+    /// - return: true if the notifications started successfully
+    public func startMonitoring() -> Bool {
         guard !self.monitoringStarted else {
             return true
         }
@@ -168,7 +161,7 @@ public class Reachability {
         self.unsafeSelfPointer.initialize(self)
         networkReachabilityContext.info = UnsafeMutablePointer<Void>(self.unsafeSelfPointer)
         
-        if SCNetworkReachabilitySetCallback(self.reachabilityReference, self.internalReachabilityCallback(), &networkReachabilityContext) {
+        if SCNetworkReachabilitySetCallback(self.reachabilityReference, Monitor.systemReachabilityCallback(), &networkReachabilityContext) {
             if SCNetworkReachabilityScheduleWithRunLoop(self.reachabilityReference, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode) {
                 return true
             }
@@ -177,10 +170,8 @@ public class Reachability {
         return false
     }
     
-    /**
-        Stops the current monitoring of network status.
-    */
-    public func stopNotifier() {
+    /// Stops the current monitoring of network reachability
+    public func stopMonitoring() {
         
         guard monitoringStarted else {
             return;
@@ -194,29 +185,25 @@ public class Reachability {
         monitoringStarted = false
     }
     
-    /**
-        Add a callback listener with the specified identifier that gets called any time the network
-        status changes.
-
-        :param: withIdentifier the identifier to use with this callback
-        :param: callback the callback to call when the network status changes
-    */
-    public func addReachabilitySubscriber(subscriber: NetworkStatusSubscriber) -> ReachabilitySubscription {
+    /// Add a subscriber for network status notifications. This function returns a subscription 
+    /// object that must be held strongly by the callee to keep the subscription active. Once the 
+    /// returned subscription falls out of scope, the subscription is automatically removed.
+    ///
+    /// - parameter subscriber: the subscriber for network status notification changes
+    /// - returns: a subscription token that must be retained for the subscription to remain active
+    public func addReachabilitySubscriber(subscriber: NetworkStatusSubscriber) -> NetworkStatusSubscription {
         
-        let subscription = ReachabilitySubscription(subscriber: subscriber, reachability: self)
-        self.reachabilitySubscriptions.append(subscription)
+        let subscription = NetworkStatusSubscription(subscriber: subscriber, monitor: self)
+        self.reachabilitySubscriptions.append(subscriber)
         return subscription
     }
     
-    /**
-        Removes a specified callback listener.
-    
-        @param withIdentifier the identifier to use with this callback
-    */
-
-    public func removeReachabilitySubscription(subscription: ReachabilitySubscription) {
+    /// Removes a subscriber from the list of subscriptions.
+    ///
+    /// - parameter subscription: the subscription to remove from the list of subscribers
+    public func removeReachabilitySubscription(subscription: NetworkStatusSubscription) {
         self.reachabilitySubscriptions = self.reachabilitySubscriptions.filter {
-            if $0 === subscription {
+            if $0 === subscription.subscriber {
                 return false
             }
             
@@ -224,36 +211,20 @@ public class Reachability {
         }
     }
     
-    /**
-        Updates the current reachability status for the current instance using the reachability 
-        reference.
-    
-        @return the reachability status retrieved from system configuration
-    */
-    private func updateCurrentReachabilityStatus() {
-        
-        var flags = SCNetworkReachabilityFlags()
-        
-        if SCNetworkReachabilityGetFlags(self.reachabilityReference, &flags) {
-            self.reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
-        }
-    }
-
     /// Internal callback called by the system configuration framework
-    private func internalReachabilityCallback() -> SCNetworkReachabilityCallBack {
+    static func systemReachabilityCallback() -> SCNetworkReachabilityCallBack {
         
         let callback: SCNetworkReachabilityCallBack = {(target: SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutablePointer<Void>) in
             
-            let reachabiltyReference = UnsafeMutablePointer<Reachability>(info)
+            let reachabiltyReference = UnsafeMutablePointer<Monitor>(info)
             let reachability = reachabiltyReference.memory
 
             let reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
-            reachability.reachabilityStatus = reachabilityStatus
             
             for subscriber in reachability.reachabilitySubscriptions {
                 
                 dispatch_async(reachability.callbackQueue) {
-                    subscriber.subscriber?.networkStatusChanged(reachability.reachabilityStatus)
+                    subscriber.networkStatusChanged(reachabilityStatus)
                 }
             }
         }

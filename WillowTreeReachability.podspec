@@ -15,15 +15,15 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "WTReachability"
+  s.name         = "WillowTreeReachability"
   s.version      = "1.0.0"
   s.summary      = "Simple Swift class for monitoring network reachability."
 
   s.description  = <<-DESC
-                   Simple Swift class for monitoring network reachability. This class uses a closure to notify listeners of network status changes. Multiple listeners may be added to a single Reachability instance.
+                   Simple Swift class for monitoring network reachability. This class uses a subscription model to notify listeners of network status changes. Multiple listeners may be added to a single Reachability instance.
                    DESC
 
-  s.homepage     = "https://github.com/willowtreeapps/WTReachability"
+  s.homepage     = "https://github.com/willowtreeapps/WillowTreeReachability"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -34,8 +34,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "Proprietary"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -71,7 +70,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/willowtreeapps/WTReachability", :tag => s.version }
+  s.source       = { :git => "https://github.com/willowtreeapps/WillowTreeReachability", :tag => s.version }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -108,7 +107,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  # s.framework  = "SomeFramework"
+  s.framework  = "SystemConfiguration"
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"

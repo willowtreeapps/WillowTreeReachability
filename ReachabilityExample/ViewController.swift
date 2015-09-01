@@ -13,15 +13,15 @@ class ViewController: UIViewController, NetworkStatusSubscriber {
     @IBOutlet weak var connectionStatusLight: UIView!
     @IBOutlet weak var connectionStatusFlagLabel: UILabel!
     
-    var reachability: Reachability?
-    var reachabilitySubscription: ReachabilitySubscription?
+    var reachability: Monitor?
+    var reachabilitySubscription: NetworkStatusSubscription?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     deinit {
-        self.reachability?.stopNotifier()
+        self.reachability?.stopMonitoring()
     }
     
     override func viewDidLoad() {
@@ -32,12 +32,12 @@ class ViewController: UIViewController, NetworkStatusSubscriber {
         self.connectionStatusLight.layer.borderColor = UIColor.blackColor().CGColor
         self.connectionStatusLight.backgroundColor = UIColor.whiteColor()
         
-        self.reachability = Reachability(withURL: NSURL(string: "http://www.willowtreeapps.com")!)
+        self.reachability = Monitor(withURL: NSURL(string: "http://www.willowtreeapps.com")!)
         
         // Use the following for generic internet reachability
         // self.reachability = Reachability()
         
-        self.reachability?.startNotifier()
+        self.reachability?.startMonitoring()
         
         
         self.reachabilitySubscription = self.reachability?.addReachabilitySubscriber(self)
