@@ -6,6 +6,10 @@
 import Foundation
 import SystemConfiguration
 
+public protocol NetworkStatusSubscriber: class {
+    func networkStatusChanged(status: ReachabilityStatus)
+}
+
 public enum ReachabilityStatus: Int, CustomStringConvertible {
     /// Unknown network state
     case Unknown
@@ -59,22 +63,29 @@ public enum ReachabilityStatus: Int, CustomStringConvertible {
     }
 }
 
+public class ReachabilitySubscription {
+    weak var subscriber: NetworkStatusSubscriber?
+    weak var reachability: Reachability?
+    
+    init(subscriber: NetworkStatusSubscriber?, reachability: Reachability?)
+    {
+        self.subscriber = subscriber
+        self.reachability = reachability
+    }
+    
+    deinit {
+        self.reachability?.removeReachabilitySubscription(self)
+    }
+}
+
 public class Reachability {
     
-    /// THe current reachability status
+    /// The current reachability status
     public var reachabilityStatus: ReachabilityStatus = .Unknown
-    
-    /// Returns true if the network is reachable in either wifi or cellular
-    public var isReachable: Bool {
-        get {
-            return self.reachabilityStatus == .ViaWifi ||
-                   self.reachabilityStatus == .ViaCellular
-        }
-    }
     
     typealias ReachabilityCallback = (status: ReachabilityStatus) -> Void
     
-    private var reachabilityCallbacks = [String: ReachabilityCallback]()
+    private var reachabilitySubscriptions = [ReachabilitySubscription]()
     private var unsafeSelfPointer = UnsafeMutablePointer<Reachability>.alloc(1)
     
     private let callbackQueue = dispatch_queue_create("com.willowtreeapps.Reachability", DISPATCH_QUEUE_CONCURRENT)
@@ -187,11 +198,14 @@ public class Reachability {
         Add a callback listener with the specified identifier that gets called any time the network
         status changes.
 
-        @param withIdentifier the identifier to use with this callback
-        @param callback the callback to call when the network status changes
+        :param: withIdentifier the identifier to use with this callback
+        :param: callback the callback to call when the network status changes
     */
-    public func addReachabilityCallback(withIdentifier identifier: String, _ callback: ((status: ReachabilityStatus) -> Void)) {
-        self.reachabilityCallbacks[identifier] = callback;
+    public func addReachabilitySubscriber(subscriber: NetworkStatusSubscriber) -> ReachabilitySubscription {
+        
+        let subscription = ReachabilitySubscription(subscriber: subscriber, reachability: self)
+        self.reachabilitySubscriptions.append(subscription)
+        return subscription
     }
     
     /**
@@ -200,8 +214,14 @@ public class Reachability {
         @param withIdentifier the identifier to use with this callback
     */
 
-    public func removeReachabilityCallback(withIdentifier identifier: String) {
-        self.reachabilityCallbacks.removeValueForKey(identifier)
+    public func removeReachabilitySubscription(subscription: ReachabilitySubscription) {
+        self.reachabilitySubscriptions = self.reachabilitySubscriptions.filter {
+            if $0 === subscription {
+                return false
+            }
+            
+            return true
+        }
     }
     
     /**
@@ -210,7 +230,7 @@ public class Reachability {
     
         @return the reachability status retrieved from system configuration
     */
-    private func updateCurrentReachabilityStatus() -> Void {
+    private func updateCurrentReachabilityStatus() {
         
         var flags = SCNetworkReachabilityFlags()
         
@@ -230,9 +250,10 @@ public class Reachability {
             let reachabilityStatus = ReachabilityStatus.statusForReachabilityFlags(flags)
             reachability.reachabilityStatus = reachabilityStatus
             
-            for callback in reachability.reachabilityCallbacks.values {
+            for subscriber in reachability.reachabilitySubscriptions {
+                
                 dispatch_async(reachability.callbackQueue) {
-                    callback(status: reachability.reachabilityStatus)
+                    subscriber.subscriber?.networkStatusChanged(reachability.reachabilityStatus)
                 }
             }
         }

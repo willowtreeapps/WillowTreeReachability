@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NetworkStatusSubscriber {
    
     @IBOutlet weak var connectionStatusLight: UIView!
     @IBOutlet weak var connectionStatusFlagLabel: UILabel!
     
     var reachability: Reachability?
+    var reachabilitySubscription: ReachabilitySubscription?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,14 +40,15 @@ class ViewController: UIViewController {
         self.reachability?.startNotifier()
         
         
-        self.reachability?.addReachabilityCallback(withIdentifier: "ViewController", self.setViewStateForStatus)
+        self.reachabilitySubscription = self.reachability?.addReachabilitySubscriber(self)
         
         if let reachability = self.reachability {
-            self.setViewStateForStatus(reachability.reachabilityStatus)
+            self.networkStatusChanged(reachability.reachabilityStatus)
         }
+        
     }
-
-    func setViewStateForStatus(status: ReachabilityStatus) {
+    
+    func networkStatusChanged(status: ReachabilityStatus) {
         dispatch_async(dispatch_get_main_queue()) {
             switch status {
             case .NotReachable:
