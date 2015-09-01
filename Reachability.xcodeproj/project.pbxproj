@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		03675E0A1B947D7F00FD589A /* ReachabilityStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03675E091B947D7F00FD589A /* ReachabilityStatusTests.swift */; settings = {ASSET_TAGS = (); }; };
 		0382BAF91B90B98900849DDA /* ReachabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BAF81B90B98900849DDA /* ReachabilityTests.swift */; };
-		0382BB0E1B90BA1000849DDA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB041B90BA1000849DDA /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
+		0382BB0E1B90BA1000849DDA /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB041B90BA1000849DDA /* Monitor.swift */; settings = {ASSET_TAGS = (); }; };
 		0382BB0F1B90BA1000849DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB061B90BA1000849DDA /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		0382BB101B90BA1000849DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0382BB071B90BA1000849DDA /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		0382BB111B90BA1000849DDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0382BB081B90BA1000849DDA /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -33,7 +33,7 @@
 		0382BAF41B90B98900849DDA /* ReachabilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReachabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0382BAF81B90B98900849DDA /* ReachabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityTests.swift; sourceTree = "<group>"; };
 		0382BAFA1B90B98900849DDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0382BB041B90BA1000849DDA /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		0382BB041B90BA1000849DDA /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		0382BB061B90BA1000849DDA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0382BB071B90BA1000849DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0382BB091B90BA1000849DDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		0382BB031B90BA1000849DDA /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				0382BB041B90BA1000849DDA /* Reachability.swift */,
+				0382BB041B90BA1000849DDA /* Monitor.swift */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -212,7 +212,7 @@
 			files = (
 				03B625751B91D8F7004D31C3 /* ViewController.swift in Sources */,
 				0382BB0F1B90BA1000849DDA /* AppDelegate.swift in Sources */,
-				0382BB0E1B90BA1000849DDA /* Reachability.swift in Sources */,
+				0382BB0E1B90BA1000849DDA /* Monitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
