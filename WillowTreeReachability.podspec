@@ -56,11 +56,11 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
-  # s.osx.deployment_target = "10.7"
+  # s.ios.deployment_target = "8.0"
+  # s.osx.deployment_target = "10.9"
   # s.watchos.deployment_target = "2.0"
 
 
@@ -70,7 +70,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/willowtreeapps/WillowTreeReachability", :tag => s.version }
+  s.source       = { :git => "https://github.com/willowtreeapps/WillowTreeReachability.git", :tag => "1.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -81,8 +81,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Reachablity/**"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "Reachability", "Reachability/**/*.{swift}"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -107,7 +106,8 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  s.framework  = "SystemConfiguration"
+  s.ios.frameworks = 'MobileCoreServices', 'SystemConfiguration'
+  # s.framework  = "SystemConfiguration"
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"

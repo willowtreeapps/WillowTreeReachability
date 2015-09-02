@@ -1,0 +1,6 @@
+language: swift
+xcode_project: Reachability/Reachability.xcodeproj
+xcode_scheme: Reachability
+xcode_sdk: iphonesimulator8.1
+notifications:
+  email: false
