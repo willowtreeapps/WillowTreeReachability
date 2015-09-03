@@ -1,8 +1,6 @@
 # WillowTreeReachability
 by [WillowTree, Inc.](http://www.willowtreeapps.com) *We're hiring! Come join our team!*
 
-[![Build Status](https://travis-ci.org/willowtreeapps/WillowTreeReachability.svg?branch=master)](https://travis-ci.org/willowtreeapps/WillowTreeReachability?branch=master)
-
 Simple Swift class for monitoring network reachability. This class uses a subscription model to notify listeners of network status changes. Multiple listeners may be added to a single Reachability instance.
 
 
