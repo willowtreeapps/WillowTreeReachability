@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/willowtreeapps/WillowTreeReachability.svg?branch=master)](https://travis-ci.org/willowtreeapps/WillowTreeReachability?branch=master)
+
 # WillowTreeReachability
 by [WillowTree, Inc.](http://www.willowtreeapps.com) *We're hiring! Come join our team!*
 
