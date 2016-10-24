@@ -12,7 +12,7 @@ import SystemConfiguration
 
 class TestNetworkSubscriber: NetworkStatusSubscriber {
     
-    var status: ReachabilityStatus = .Unknown
+    var status: ReachabilityStatus = .unknown
     
     func networkStatusChanged(status: ReachabilityStatus) {
         self.status = status
@@ -32,17 +32,19 @@ class ReachabilityTests: XCTestCase {
     
     func testSubscriptionLifecycle() {
         if let monitor = Monitor() {
-            monitor.startMonitoring()
+            _ = monitor.start()
             let subscriber = TestNetworkSubscriber()
-            var subscription: NetworkStatusSubscription? =  monitor.addReachabilitySubscriber(subscriber)
+            var subscription: NetworkStatusSubscription? = monitor.addSubscription(using: subscriber)
 
             let scNetworkCallback = Monitor.systemReachabilityCallback()
-            scNetworkCallback(monitor.reachabilityReference, SCNetworkReachabilityFlags.Reachable, monitor.unsafeSelfPointer)
+            scNetworkCallback(monitor.reachabilityReference, SCNetworkReachabilityFlags.reachable, monitor.unsafeSelfPointer)
             
-            XCTAssert(monitor.reachabilitySubscriptions.count == 1, "Subscription count is not 1")
-            subscription = nil
+            XCTAssert(monitor.subscriptions.count == 1, "Subscription count is not 1")
+            if subscription != nil { 
+                subscription = nil
+            }
             
-            XCTAssert(monitor.reachabilitySubscriptions.count == 0, "Subscription count is not 0")
+            XCTAssert(monitor.subscriptions.count == 0, "Subscription count is not 0")
         }
     }
     

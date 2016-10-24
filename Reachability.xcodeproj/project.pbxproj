@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03675E0A1B947D7F00FD589A /* ReachabilityStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03675E091B947D7F00FD589A /* ReachabilityStatusTests.swift */; settings = {ASSET_TAGS = (); }; };
+		03675E0A1B947D7F00FD589A /* ReachabilityStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03675E091B947D7F00FD589A /* ReachabilityStatusTests.swift */; };
 		0382BAF91B90B98900849DDA /* ReachabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BAF81B90B98900849DDA /* ReachabilityTests.swift */; };
-		0382BB0E1B90BA1000849DDA /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB041B90BA1000849DDA /* Monitor.swift */; settings = {ASSET_TAGS = (); }; };
-		0382BB0F1B90BA1000849DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB061B90BA1000849DDA /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		0382BB101B90BA1000849DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0382BB071B90BA1000849DDA /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		0382BB111B90BA1000849DDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0382BB081B90BA1000849DDA /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		0382BB121B90BA1000849DDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0382BB0A1B90BA1000849DDA /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		03B625751B91D8F7004D31C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB0D1B90BA1000849DDA /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0382BB0E1B90BA1000849DDA /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB041B90BA1000849DDA /* Monitor.swift */; };
+		0382BB0F1B90BA1000849DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB061B90BA1000849DDA /* AppDelegate.swift */; };
+		0382BB101B90BA1000849DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0382BB071B90BA1000849DDA /* Assets.xcassets */; };
+		0382BB111B90BA1000849DDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0382BB081B90BA1000849DDA /* LaunchScreen.storyboard */; };
+		0382BB121B90BA1000849DDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0382BB0A1B90BA1000849DDA /* Main.storyboard */; };
+		03B625751B91D8F7004D31C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382BB0D1B90BA1000849DDA /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,14 +154,18 @@
 		0382BAD81B90B98900849DDA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "WillowTree, Inc.";
 				TargetAttributes = {
 					0382BADF1B90B98900849DDA = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 7UMFPW78PV;
+						LastSwiftMigration = 0800;
 					};
 					0382BAF31B90B98900849DDA = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 7UMFPW78PV;
+						LastSwiftMigration = 0800;
 						TestTargetID = 0382BADF1B90B98900849DDA;
 					};
 				};
@@ -268,8 +272,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -312,8 +318,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -332,6 +340,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -340,11 +349,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7UMFPW78PV;
 				INFOPLIST_FILE = "$(SRCROOT)/ReachabilityExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.Reachability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -352,11 +363,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7UMFPW78PV;
 				INFOPLIST_FILE = "$(SRCROOT)/ReachabilityExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.Reachability;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -364,10 +377,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7UMFPW78PV;
 				INFOPLIST_FILE = ReachabilityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.ReachabilityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reachability.app/Reachability";
 			};
 			name = Debug;
@@ -376,10 +391,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 7UMFPW78PV;
 				INFOPLIST_FILE = ReachabilityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.ReachabilityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reachability.app/Reachability";
 			};
 			name = Release;
