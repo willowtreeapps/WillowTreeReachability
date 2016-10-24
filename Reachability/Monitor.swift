@@ -83,15 +83,13 @@ public class Monitor {
     
     /// Returns the current reachability status
     public var status: ReachabilityStatus {
-        get {
-            var flags = SCNetworkReachabilityFlags()
+        var flags = SCNetworkReachabilityFlags()
             
-            if SCNetworkReachabilityGetFlags(self.reachabilityReference, &flags) {
-                return ReachabilityStatus.statusForReachabilityFlags(flags)
-            }
-            
-            return .unknown
+        if SCNetworkReachabilityGetFlags(self.reachabilityReference, &flags) {
+            return ReachabilityStatus.statusForReachabilityFlags(flags)
         }
+        
+        return .unknown
     }
     
     var subscriptions = [NetworkStatusSubscriber]()
@@ -203,11 +201,7 @@ public class Monitor {
     /// - parameter subscription: the subscription to remove from the list of subscribers
     public func removeSubscription(_ subscription: NetworkStatusSubscription) {
         subscriptions = subscriptions.filter {
-            if $0 === subscription.subscriber {
-                return false
-            }
-            
-            return true
+            $0 !== subscription.subscriber
         }
     }
     
