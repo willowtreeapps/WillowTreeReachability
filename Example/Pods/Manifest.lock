@@ -1,0 +1,16 @@
+PODS:
+  - WillowTreeReachability (2.0.1)
+
+DEPENDENCIES:
+  - WillowTreeReachability (from `..`)
+
+EXTERNAL SOURCES:
+  WillowTreeReachability:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  WillowTreeReachability: 1f243423a66e5b1b4e09e5ae406b17a89660cdd3
+
+PODFILE CHECKSUM: 7eba9360bc5a5e0abad86dc00f1714f4287e97d2
+
+COCOAPODS: 1.1.1

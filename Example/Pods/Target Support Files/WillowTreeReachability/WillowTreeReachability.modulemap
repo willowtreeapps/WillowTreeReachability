@@ -1,0 +1,6 @@
+framework module WillowTreeReachability {
+  umbrella header "WillowTreeReachability-umbrella.h"
+
+  export *
+  module * { export * }
+}

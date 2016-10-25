@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WillowTreeReachability"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "Simple Swift class for monitoring network reachability."
 
   s.description  = <<-DESC
@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Reachability", "Reachability/**/*.{swift}"
+  s.source_files  = "Reachability", "Sources/**/*.{swift}"
 
   # s.public_header_files = "Classes/**/*.h"
 

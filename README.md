@@ -5,6 +5,19 @@ by [WillowTree, Inc.](http://www.willowtreeapps.com) *We're hiring! Come join ou
 
 Simple Swift class for monitoring network reachability. This class uses a subscription model to notify listeners of network status changes. Multiple listeners may be added to a single Reachability instance.
 
+## Installation
+
+CocoaPods:
+
+```ruby
+pod 'WillowTreeReachability'
+```
+
+Carthage:
+
+```ruby
+github "willowtreeapps/WillowTreeReachability" >= 2.0
+```
 
 ## Usage
 

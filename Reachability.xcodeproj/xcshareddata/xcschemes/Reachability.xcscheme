@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0382BADF1B90B98900849DDA"
-               BuildableName = "Reachability.app"
+               BlueprintIdentifier = "DC8AB7711DC01C2E005BCBA7"
+               BuildableName = "Reachability.framework"
                BlueprintName = "Reachability"
                ReferencedContainer = "container:Reachability.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0382BAF31B90B98900849DDA"
+               BlueprintIdentifier = "DC8AB7791DC01C2F005BCBA7"
                BuildableName = "ReachabilityTests.xctest"
                BlueprintName = "ReachabilityTests"
                ReferencedContainer = "container:Reachability.xcodeproj">
@@ -42,8 +42,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0382BADF1B90B98900849DDA"
-            BuildableName = "Reachability.app"
+            BlueprintIdentifier = "DC8AB7711DC01C2E005BCBA7"
+            BuildableName = "Reachability.framework"
             BlueprintName = "Reachability"
             ReferencedContainer = "container:Reachability.xcodeproj">
          </BuildableReference>
@@ -65,8 +65,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0382BADF1B90B98900849DDA"
-            BuildableName = "Reachability.app"
+            BlueprintIdentifier = "DC8AB7711DC01C2E005BCBA7"
+            BuildableName = "Reachability.framework"
             BlueprintName = "Reachability"
             ReferencedContainer = "container:Reachability.xcodeproj">
          </BuildableReference>
@@ -84,8 +84,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0382BADF1B90B98900849DDA"
-            BuildableName = "Reachability.app"
+            BlueprintIdentifier = "DC8AB7711DC01C2E005BCBA7"
+            BuildableName = "Reachability.framework"
             BlueprintName = "Reachability"
             ReferencedContainer = "container:Reachability.xcodeproj">
          </BuildableReference>

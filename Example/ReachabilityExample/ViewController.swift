@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import WillowTreeReachability
 
 class ViewController: UIViewController, NetworkStatusSubscriber {
-   
+    
     @IBOutlet weak var connectionStatusLight: UIView!
     @IBOutlet weak var connectionStatusFlagLabel: UILabel!
     
@@ -26,22 +27,22 @@ class ViewController: UIViewController, NetworkStatusSubscriber {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         connectionStatusLight.layer.borderWidth = 1.0 / UIScreen.main.scale
         connectionStatusLight.layer.cornerRadius = 10.0
         connectionStatusLight.layer.borderColor = UIColor.black.cgColor
         connectionStatusLight.backgroundColor = UIColor.white
         
         reachability = Monitor(withURL: NSURL(string: "http://www.willowtreeapps.com")!)
-
+        
         // Use the following for generic internet reachability
-//        reachability = Monitor()
-
+        //        reachability = Monitor()
+        
         _ = reachability?.start()
         
         
         reachabilitySubscription = reachability?.addSubscription(using: self)
-
+        
         if let reachability = reachability {
             self.networkStatusChanged(status: reachability.status)
         }
@@ -52,7 +53,7 @@ class ViewController: UIViewController, NetworkStatusSubscriber {
         DispatchQueue.main.async { [weak self] in
             switch status {
             case .notReachable:
-                    self?.connectionStatusLight.backgroundColor = UIColor.red
+                self?.connectionStatusLight.backgroundColor = UIColor.red
             case .viaWifi, .viaCellular:
                 self?.connectionStatusLight.backgroundColor = UIColor.green
             default:
