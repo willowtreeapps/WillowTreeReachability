@@ -33,10 +33,10 @@ class ViewController: UIViewController, NetworkStatusSubscriber {
         connectionStatusLight.backgroundColor = UIColor.white
         
         reachability = Monitor(withURL: NSURL(string: "http://www.willowtreeapps.com")!)
-        
+
         // Use the following for generic internet reachability
-        // self.reachability = Reachability()
-        
+//        reachability = Monitor()
+
         _ = reachability?.start()
         
         
