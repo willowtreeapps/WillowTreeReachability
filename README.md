@@ -27,9 +27,9 @@ Please note that WillowTreeReachability uses optional initializers and if there 
 WillowTreeReachability utilizes asynchronous network status monitoring to update the application of network changes. The notifier can be started by calling ```startMonitoring``` and adding a subscriber through the ```addReachabilitySubscriber``` function. An example is shown below.
 
 ```
-reachability?.startMonitoring()
+reachability?.start()
 
-self.reachabilitySubscription = self.reachability?.addReachabilitySubscriber(self)
+reachabilitySubscription = reachability?.addSubscription(using: self)
 
 }
 ```
@@ -38,4 +38,4 @@ The subscription should be held strongly by the callee to keep the subscription 
 
 ### Stopping Reachability
 
-In order to properly clean up when stopping the reachability notifications, the ```stopMonitoring``` function should be called.
+In order to properly clean up when stopping the reachability notifications, the ```stop``` function should be called.

@@ -28,70 +28,70 @@ class ReachabilityStatusTests: XCTestCase {
     func testNotConnected() {
         let flags = SCNetworkReachabilityFlags(rawValue: 0)
         let status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.NotReachable, "Status for no set flags must be not reachable")
+        XCTAssert(status == ReachabilityStatus.notReachable, "Status for no set flags must be not reachable")
         
     }
     /**
     Test the standard wifi connection case
     */
     func testReachabilityStatusConnectedWifi() {
-        let flags = SCNetworkReachabilityFlags.Reachable
+        let flags = SCNetworkReachabilityFlags.reachable
         let status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.ViaWifi, "Status for reachable network flag must be via wifi")
+        XCTAssert(status == ReachabilityStatus.viaWifi, "Status for reachable network flag must be via wifi")
     }
     
     /**
     Tests the standard cellular connection case.
     */
     func testReachabilityStatusConnectedCellular() {
-        let rawFlags = SCNetworkReachabilityFlags.Reachable.rawValue | SCNetworkReachabilityFlags.IsWWAN.rawValue
+        let rawFlags = SCNetworkReachabilityFlags.reachable.rawValue | SCNetworkReachabilityFlags.isWWAN.rawValue
         let flags = SCNetworkReachabilityFlags.init(rawValue: rawFlags)
         let status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.ViaCellular, "Status for reachable network flag must be via cellular")
+        XCTAssert(status == ReachabilityStatus.viaCellular, "Status for reachable network flag must be via cellular")
     }
     
     /**
     Tests all the various combinations of connections on traffic/demand.
     */
     func testReachabilityStatusConnectionNeeded() {
-        var rawFlags = SCNetworkReachabilityFlags.ConnectionRequired.rawValue |
-            SCNetworkReachabilityFlags.ConnectionOnTraffic.rawValue |
-            SCNetworkReachabilityFlags.InterventionRequired.rawValue
+        var rawFlags = SCNetworkReachabilityFlags.connectionRequired.rawValue |
+            SCNetworkReachabilityFlags.connectionOnTraffic.rawValue |
+            SCNetworkReachabilityFlags.interventionRequired.rawValue
         var flags = SCNetworkReachabilityFlags.init(rawValue: rawFlags)
         var status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.NotReachable, "Connection on traffic reachable with intervention required set")
+        XCTAssert(status == ReachabilityStatus.notReachable, "Connection on traffic reachable with intervention required set")
         
-        rawFlags = SCNetworkReachabilityFlags.ConnectionRequired.rawValue |
-            SCNetworkReachabilityFlags.ConnectionOnDemand.rawValue |
-            SCNetworkReachabilityFlags.InterventionRequired.rawValue
+        rawFlags = SCNetworkReachabilityFlags.connectionRequired.rawValue |
+            SCNetworkReachabilityFlags.connectionOnDemand.rawValue |
+            SCNetworkReachabilityFlags.interventionRequired.rawValue
         flags = SCNetworkReachabilityFlags.init(rawValue: rawFlags)
         status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.NotReachable, "Connection on demand reachable with intervention required set")
+        XCTAssert(status == ReachabilityStatus.notReachable, "Connection on demand reachable with intervention required set")
         
-        rawFlags = SCNetworkReachabilityFlags.ConnectionRequired.rawValue |
-            SCNetworkReachabilityFlags.ConnectionOnDemand.rawValue
+        rawFlags = SCNetworkReachabilityFlags.connectionRequired.rawValue |
+            SCNetworkReachabilityFlags.connectionOnDemand.rawValue
         flags = SCNetworkReachabilityFlags.init(rawValue: rawFlags)
         status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.NotReachable, "Connection on demand reachable without reachable flag set")
+        XCTAssert(status == ReachabilityStatus.notReachable, "Connection on demand reachable without reachable flag set")
         
-        rawFlags = SCNetworkReachabilityFlags.ConnectionRequired.rawValue |
-            SCNetworkReachabilityFlags.ConnectionOnDemand.rawValue
+        rawFlags = SCNetworkReachabilityFlags.connectionRequired.rawValue |
+            SCNetworkReachabilityFlags.connectionOnDemand.rawValue
         flags = SCNetworkReachabilityFlags.init(rawValue: rawFlags)
         status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.NotReachable, "Connection on traffic reachable without reachable flag set")
+        XCTAssert(status == ReachabilityStatus.notReachable, "Connection on traffic reachable without reachable flag set")
         
-        rawFlags = SCNetworkReachabilityFlags.ConnectionRequired.rawValue |
-            SCNetworkReachabilityFlags.ConnectionOnDemand.rawValue |
-            SCNetworkReachabilityFlags.Reachable.rawValue
+        rawFlags = SCNetworkReachabilityFlags.connectionRequired.rawValue |
+            SCNetworkReachabilityFlags.connectionOnDemand.rawValue |
+            SCNetworkReachabilityFlags.reachable.rawValue
         flags = SCNetworkReachabilityFlags.init(rawValue: rawFlags)
         status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.ViaWifi, "Connection on demand not reachable without intervention required set")
+        XCTAssert(status == ReachabilityStatus.viaWifi, "Connection on demand not reachable without intervention required set")
         
-        rawFlags = SCNetworkReachabilityFlags.ConnectionRequired.rawValue |
-            SCNetworkReachabilityFlags.ConnectionOnDemand.rawValue |
-            SCNetworkReachabilityFlags.Reachable.rawValue
+        rawFlags = SCNetworkReachabilityFlags.connectionRequired.rawValue |
+            SCNetworkReachabilityFlags.connectionOnDemand.rawValue |
+            SCNetworkReachabilityFlags.reachable.rawValue
         flags = SCNetworkReachabilityFlags.init(rawValue: rawFlags)
         status = ReachabilityStatus.statusForReachabilityFlags(flags)
-        XCTAssert(status == ReachabilityStatus.ViaWifi, "Connection on traffic not reachable without intervention required set")
+        XCTAssert(status == ReachabilityStatus.viaWifi, "Connection on traffic not reachable without intervention required set")
     }
 }

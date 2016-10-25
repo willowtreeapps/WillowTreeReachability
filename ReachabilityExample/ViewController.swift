@@ -21,46 +21,45 @@ class ViewController: UIViewController, NetworkStatusSubscriber {
     }
     
     deinit {
-        self.reachability?.stopMonitoring()
+        reachability?.stop()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        self.connectionStatusLight.layer.borderWidth = 1.0 / UIScreen.mainScreen().scale
-        self.connectionStatusLight.layer.cornerRadius = 10.0
-        self.connectionStatusLight.layer.borderColor = UIColor.blackColor().CGColor
-        self.connectionStatusLight.backgroundColor = UIColor.whiteColor()
+        connectionStatusLight.layer.borderWidth = 1.0 / UIScreen.main.scale
+        connectionStatusLight.layer.cornerRadius = 10.0
+        connectionStatusLight.layer.borderColor = UIColor.black.cgColor
+        connectionStatusLight.backgroundColor = UIColor.white
         
-        self.reachability = Monitor(withURL: NSURL(string: "http://www.willowtreeapps.com")!)
-        
+        reachability = Monitor(withURL: NSURL(string: "http://www.willowtreeapps.com")!)
+
         // Use the following for generic internet reachability
-        // self.reachability = Reachability()
+//        reachability = Monitor()
+
+        _ = reachability?.start()
         
-        self.reachability?.startMonitoring()
         
-        
-        self.reachabilitySubscription = self.reachability?.addReachabilitySubscriber(self)
-        
-        if let reachability = self.reachability {
-            self.networkStatusChanged(reachability.reachabilityStatus)
+        reachabilitySubscription = reachability?.addSubscription(using: self)
+
+        if let reachability = reachability {
+            self.networkStatusChanged(status: reachability.status)
         }
         
     }
     
     func networkStatusChanged(status: ReachabilityStatus) {
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async { [weak self] in
             switch status {
-            case .NotReachable:
-                self.connectionStatusLight.backgroundColor = UIColor.redColor()
-            case .ViaWifi, .ViaCellular:
-                self.connectionStatusLight.backgroundColor = UIColor.greenColor()
+            case .notReachable:
+                    self?.connectionStatusLight.backgroundColor = UIColor.red
+            case .viaWifi, .viaCellular:
+                self?.connectionStatusLight.backgroundColor = UIColor.green
             default:
-                self.connectionStatusLight.backgroundColor = UIColor.whiteColor()
+                self?.connectionStatusLight.backgroundColor = UIColor.white
             }
-            self.connectionStatusFlagLabel.text = status.description
+            self?.connectionStatusFlagLabel.text = status.description
         }
-
     }
 }
 
