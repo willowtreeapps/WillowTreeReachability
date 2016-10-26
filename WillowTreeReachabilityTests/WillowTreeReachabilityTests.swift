@@ -8,7 +8,7 @@
 
 import XCTest
 import SystemConfiguration
-@testable import Reachability
+@testable import WillowTreeReachability
 
 class TestNetworkSubscriber: NetworkStatusSubscriber {
     

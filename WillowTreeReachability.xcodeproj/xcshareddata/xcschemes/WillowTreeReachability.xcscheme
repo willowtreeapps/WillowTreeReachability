@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DC8AB7711DC01C2E005BCBA7"
-               BuildableName = "Reachability.framework"
-               BlueprintName = "Reachability"
-               ReferencedContainer = "container:Reachability.xcodeproj">
+               BuildableName = "WillowTreeReachability.framework"
+               BlueprintName = "WillowTreeReachability"
+               ReferencedContainer = "container:WillowTreeReachability.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DC8AB7791DC01C2F005BCBA7"
-               BuildableName = "ReachabilityTests.xctest"
-               BlueprintName = "ReachabilityTests"
-               ReferencedContainer = "container:Reachability.xcodeproj">
+               BuildableName = "WillowTreeReachabilityTests.xctest"
+               BlueprintName = "WillowTreeReachabilityTests"
+               ReferencedContainer = "container:WillowTreeReachability.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DC8AB7711DC01C2E005BCBA7"
-            BuildableName = "Reachability.framework"
-            BlueprintName = "Reachability"
-            ReferencedContainer = "container:Reachability.xcodeproj">
+            BuildableName = "WillowTreeReachability.framework"
+            BlueprintName = "WillowTreeReachability"
+            ReferencedContainer = "container:WillowTreeReachability.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DC8AB7711DC01C2E005BCBA7"
-            BuildableName = "Reachability.framework"
-            BlueprintName = "Reachability"
-            ReferencedContainer = "container:Reachability.xcodeproj">
+            BuildableName = "WillowTreeReachability.framework"
+            BlueprintName = "WillowTreeReachability"
+            ReferencedContainer = "container:WillowTreeReachability.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DC8AB7711DC01C2E005BCBA7"
-            BuildableName = "Reachability.framework"
-            BlueprintName = "Reachability"
-            ReferencedContainer = "container:Reachability.xcodeproj">
+            BuildableName = "WillowTreeReachability.framework"
+            BlueprintName = "WillowTreeReachability"
+            ReferencedContainer = "container:WillowTreeReachability.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

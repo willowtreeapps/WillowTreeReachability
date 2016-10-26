@@ -1,6 +1,6 @@
 //
-//  ReachabilityStatusTests.swift
-//  Reachability
+//  WillowTreeReachabilityStatusTests.swift
+//  WillowTreeReachability
 //
 //  Created by Erik LaManna on 8/31/15.
 //  Copyright © 2015 WillowTree, Inc. All rights reserved.
@@ -8,9 +8,9 @@
 
 import XCTest
 import SystemConfiguration
-@testable import Reachability
+@testable import WillowTreeReachability
 
-class ReachabilityStatusTests: XCTestCase {
+class WillowTreeReachabilityStatusTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
