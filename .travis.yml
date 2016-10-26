@@ -4,5 +4,5 @@ notifications:
   email: false
   slack: willowtree:s24dVJQRoR4HJGUmeG0YCsZv
 script:
-  - xcodebuild test -project Reachability.xcodeproj -scheme Reachability -destination 'platform=iOS Simulator,name=iPhone 6 Plus'
+  - xcodebuild test -project WillowTreeReachability.xcodeproj -scheme WillowTreeReachability -destination 'platform=iOS Simulator,name=iPhone 6 Plus'
   
