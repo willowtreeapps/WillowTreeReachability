@@ -7,71 +7,69 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		100550F69AB13BDD87DF0BBD734EED58 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FADB0FB1DF2B57BD1991EFE4D4F2EC /* MobileCoreServices.framework */; };
-		2C34FD2B70654710A7A2E9CD8B79F011 /* WillowTreeReachability-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE888A9E641A735FF0329ECE7B2BD0D /* WillowTreeReachability-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E9088BB1D90E2F10008F9CED45BD21A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900C2FAD51FD776E5377F1B4DC0C88DC /* Foundation.framework */; };
-		47FB2D5DEABB27E46771B685F6CB5135 /* Pods-ReachabilityExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A8312B7CD30C321447FA6290169C257D /* Pods-ReachabilityExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		488FFEF95E2A554C47522C5067DE637C /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596031678AD74D5D1F1A3836B39F2201 /* Monitor.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		68181E6030B2B92433F682EB6AFEFBAE /* Pods-ReachabilityExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B7F6AE7CEC95676B9192ADC81D96A /* Pods-ReachabilityExample-dummy.m */; };
-		6D0600B3224F5205408FCFCAF2FC0050 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A415AF02075684AFB6CCD85F7A6152 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B149D7DFCB9850586968776AA658DDE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FB758032CD5712D941642081C98860 /* SystemConfiguration.framework */; };
-		BCC3F4CDCF4FF98E39B000AFADFEFADE /* WillowTreeReachability-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1E05C676A06238DA5E6567793A6D85 /* WillowTreeReachability-dummy.m */; };
-		C6E8A4DBDCF25B4F812BEE5B285F467B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900C2FAD51FD776E5377F1B4DC0C88DC /* Foundation.framework */; };
+		2B7A605E80A5040B84966223AA24A84C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FADB0FB1DF2B57BD1991EFE4D4F2EC /* MobileCoreServices.framework */; };
+		59DE706DDBB7D09AC72ABBB5006387D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900C2FAD51FD776E5377F1B4DC0C88DC /* Foundation.framework */; };
+		59F8350076E2FAFAF1BF8BE20F20EDF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900C2FAD51FD776E5377F1B4DC0C88DC /* Foundation.framework */; };
+		5D2A25C334FC554C706A51CA6ABB757C /* WillowTreeReachability-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D7A1D8D56DFF98B28FF544870877118 /* WillowTreeReachability-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DDFA3FA6EAEF5142BF60E5094F2278B /* Pods-ReachabilityExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A8312B7CD30C321447FA6290169C257D /* Pods-ReachabilityExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1817786F0584966D34E635F2E77AE6B /* Pods-ReachabilityExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 707B7F6AE7CEC95676B9192ADC81D96A /* Pods-ReachabilityExample-dummy.m */; };
+		BE20737C043331F5E517957794CDC4DE /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529B94C104EF2F9581023F4F1BC594C8 /* Monitor.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C69D3C933B211C1691C337D6C6502EDF /* WillowTreeReachability-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DC0C75C70BD61D1ADAABA898B43FBD /* WillowTreeReachability-dummy.m */; };
+		EF600F0293D479E9AD3DC6D4DDEE1858 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92FB758032CD5712D941642081C98860 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F1DB5603D9FB2E187A549AC5E49E348E /* PBXContainerItemProxy */ = {
+		3725DEFDC7222B5F19FB0DB17BF5CBB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BDD7048FC733E5BD7D0A9C3A0B0F089B;
+			remoteGlobalIDString = 9CDFD5AECB022B405A37A6EB02944A7B;
 			remoteInfo = WillowTreeReachability;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0451969C5028D28C05DD37AE7ED181CD /* WillowTreeReachability-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WillowTreeReachability-prefix.pch"; sourceTree = "<group>"; };
 		0D687C2C2351CFFC7DC80C75EB4FDC21 /* Pods-ReachabilityExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ReachabilityExample-frameworks.sh"; sourceTree = "<group>"; };
-		181D4196B26D107181F658FEFC6DA25F /* Pods_ReachabilityExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReachabilityExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24A415AF02075684AFB6CCD85F7A6152 /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		2BE888A9E641A735FF0329ECE7B2BD0D /* WillowTreeReachability-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WillowTreeReachability-umbrella.h"; sourceTree = "<group>"; };
-		2E190E609222C11C7CC874F1B49D3040 /* WillowTreeReachability.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WillowTreeReachability.xcconfig; sourceTree = "<group>"; };
-		309D2EBBA510B59A2A18A6740AA30305 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		596031678AD74D5D1F1A3836B39F2201 /* Monitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
+		181D4196B26D107181F658FEFC6DA25F /* Pods_ReachabilityExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ReachabilityExample.framework; path = "Pods-ReachabilityExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D7A1D8D56DFF98B28FF544870877118 /* WillowTreeReachability-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WillowTreeReachability-umbrella.h"; sourceTree = "<group>"; };
+		529B94C104EF2F9581023F4F1BC594C8 /* Monitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		707B7F6AE7CEC95676B9192ADC81D96A /* Pods-ReachabilityExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ReachabilityExample-dummy.m"; sourceTree = "<group>"; };
+		7D748CA7CCD131EEFDD111F2C8FA991F /* WillowTreeReachability.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WillowTreeReachability.xcconfig; sourceTree = "<group>"; };
 		8EECE5556CCFFFABE030F55188592C60 /* Pods-ReachabilityExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ReachabilityExample.release.xcconfig"; sourceTree = "<group>"; };
 		900C2FAD51FD776E5377F1B4DC0C88DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		92FB758032CD5712D941642081C98860 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		94C2C4459A5C193BE5E20DFCE0A9DD16 /* WillowTreeReachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WillowTreeReachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94C2C4459A5C193BE5E20DFCE0A9DD16 /* WillowTreeReachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WillowTreeReachability.framework; path = WillowTreeReachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F856C58244D8A47835392E7AE347648 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8312B7CD30C321447FA6290169C257D /* Pods-ReachabilityExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ReachabilityExample-umbrella.h"; sourceTree = "<group>"; };
 		B3FADB0FB1DF2B57BD1991EFE4D4F2EC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		CEFA33262E5A1DED3357D2F250BA6A3D /* Pods-ReachabilityExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ReachabilityExample-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D680D286298E1EBA86FAF31857B88623 /* Pods-ReachabilityExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ReachabilityExample.modulemap"; sourceTree = "<group>"; };
+		D680D286298E1EBA86FAF31857B88623 /* Pods-ReachabilityExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ReachabilityExample.modulemap"; sourceTree = "<group>"; };
+		D6DC0C75C70BD61D1ADAABA898B43FBD /* WillowTreeReachability-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WillowTreeReachability-dummy.m"; sourceTree = "<group>"; };
 		D74231243DDC9B970393E4F7165895AB /* Pods-ReachabilityExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ReachabilityExample-acknowledgements.plist"; sourceTree = "<group>"; };
-		DD1E05C676A06238DA5E6567793A6D85 /* WillowTreeReachability-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WillowTreeReachability-dummy.m"; sourceTree = "<group>"; };
-		F305162AA710302202CABC4FF1B891DF /* WillowTreeReachability-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WillowTreeReachability-prefix.pch"; sourceTree = "<group>"; };
-		F6AE01AE5CC1C3C0D09D26C93EED25E2 /* WillowTreeReachability.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = WillowTreeReachability.modulemap; sourceTree = "<group>"; };
+		EF182E7D8C0F00360505E3BD4B3698EB /* WillowTreeReachability.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = WillowTreeReachability.modulemap; sourceTree = "<group>"; };
 		F989777B92B180110BDBA5D5229AD6A4 /* Pods-ReachabilityExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ReachabilityExample-resources.sh"; sourceTree = "<group>"; };
+		FBF76671F9E96DF4065D374F0E9B1649 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE8FC61F781B2043E45EA999A4F101D6 /* Pods-ReachabilityExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ReachabilityExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1420DED628AADC3E61B4F73FAF8F8A83 /* Frameworks */ = {
+		57948E3E91538B64A156764DB7F67450 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6E8A4DBDCF25B4F812BEE5B285F467B /* Foundation.framework in Frameworks */,
-				100550F69AB13BDD87DF0BBD734EED58 /* MobileCoreServices.framework in Frameworks */,
-				B149D7DFCB9850586968776AA658DDE1 /* SystemConfiguration.framework in Frameworks */,
+				59DE706DDBB7D09AC72ABBB5006387D0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		72C255A348B91688AB5DB49DA0F68154 /* Frameworks */ = {
+		DE398447CAFDB6BF027D98377B7B0A6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E9088BB1D90E2F10008F9CED45BD21A /* Foundation.framework in Frameworks */,
+				59F8350076E2FAFAF1BF8BE20F20EDF5 /* Foundation.framework in Frameworks */,
+				2B7A605E80A5040B84966223AA24A84C /* MobileCoreServices.framework in Frameworks */,
+				EF600F0293D479E9AD3DC6D4DDEE1858 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,12 +84,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		190CECB54378F7160A5B61CF3A1EFC3C /* Development Pods */ = {
+		43864A66D00A7ED2E40741EB1FB39355 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B8C59F2CB0312AB58ED4CD66E9029995 /* WillowTreeReachability */,
+				FBF76671F9E96DF4065D374F0E9B1649 /* Info.plist */,
+				EF182E7D8C0F00360505E3BD4B3698EB /* WillowTreeReachability.modulemap */,
+				7D748CA7CCD131EEFDD111F2C8FA991F /* WillowTreeReachability.xcconfig */,
+				D6DC0C75C70BD61D1ADAABA898B43FBD /* WillowTreeReachability-dummy.m */,
+				0451969C5028D28C05DD37AE7ED181CD /* WillowTreeReachability-prefix.pch */,
+				2D7A1D8D56DFF98B28FF544870877118 /* WillowTreeReachability-umbrella.h */,
 			);
-			name = "Development Pods";
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/WillowTreeReachability";
+			sourceTree = "<group>";
+		};
+		5C7057B384133DB0273F15BDE8455941 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				529B94C104EF2F9581023F4F1BC594C8 /* Monitor.swift */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5F11BCCE61A87208A86A71AFA83A4180 /* WillowTreeReachability */ = {
+			isa = PBXGroup;
+			children = (
+				5C7057B384133DB0273F15BDE8455941 /* Sources */,
+				43864A66D00A7ED2E40741EB1FB39355 /* Support Files */,
+			);
+			name = WillowTreeReachability;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		70BF36DFC6848410D3170F831A9836C0 /* Targets Support Files */ = {
@@ -106,30 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				190CECB54378F7160A5B61CF3A1EFC3C /* Development Pods */,
+				D3F46C19C4A20115CA23A15FD0BEF63F /* Development Pods */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
 				BED36A32655A76D9E544CC8D5F0B3DFA /* Products */,
 				70BF36DFC6848410D3170F831A9836C0 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		B4E6E1EE36AF5AB1D75A0EC659EF9EB7 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				596031678AD74D5D1F1A3836B39F2201 /* Monitor.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		B8C59F2CB0312AB58ED4CD66E9029995 /* WillowTreeReachability */ = {
-			isa = PBXGroup;
-			children = (
-				EE30FC1C45571FE7B598E2DF59B842E7 /* Reachability */,
-				B4E6E1EE36AF5AB1D75A0EC659EF9EB7 /* Sources */,
-				EC569D9EB58AF921E9BB3E15D9A30AB7 /* Support Files */,
-			);
-			name = WillowTreeReachability;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		BC88CC1465A1AC563D4410E48985764F /* Pods-ReachabilityExample */ = {
@@ -159,6 +163,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D3F46C19C4A20115CA23A15FD0BEF63F /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F11BCCE61A87208A86A71AFA83A4180 /* WillowTreeReachability */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		E3257108D7E5DC885DE6B56E5C62E279 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,58 +181,35 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		EC569D9EB58AF921E9BB3E15D9A30AB7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				309D2EBBA510B59A2A18A6740AA30305 /* Info.plist */,
-				F6AE01AE5CC1C3C0D09D26C93EED25E2 /* WillowTreeReachability.modulemap */,
-				2E190E609222C11C7CC874F1B49D3040 /* WillowTreeReachability.xcconfig */,
-				DD1E05C676A06238DA5E6567793A6D85 /* WillowTreeReachability-dummy.m */,
-				F305162AA710302202CABC4FF1B891DF /* WillowTreeReachability-prefix.pch */,
-				2BE888A9E641A735FF0329ECE7B2BD0D /* WillowTreeReachability-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/WillowTreeReachability";
-			sourceTree = "<group>";
-		};
-		EE30FC1C45571FE7B598E2DF59B842E7 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				24A415AF02075684AFB6CCD85F7A6152 /* Reachability.h */,
-			);
-			path = Reachability;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4E827A6186D4AC7F010F55ED93F30B97 /* Headers */ = {
+		9CA7FA53BD8ED8D7E23A186A736697C7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47FB2D5DEABB27E46771B685F6CB5135 /* Pods-ReachabilityExample-umbrella.h in Headers */,
+				5D2A25C334FC554C706A51CA6ABB757C /* WillowTreeReachability-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8DA44BADCDF592A5088F9975CCC63124 /* Headers */ = {
+		CDCA29FCF7851EDF792C8C668B715610 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D0600B3224F5205408FCFCAF2FC0050 /* Reachability.h in Headers */,
-				2C34FD2B70654710A7A2E9CD8B79F011 /* WillowTreeReachability-umbrella.h in Headers */,
+				6DDFA3FA6EAEF5142BF60E5094F2278B /* Pods-ReachabilityExample-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		BDD7048FC733E5BD7D0A9C3A0B0F089B /* WillowTreeReachability */ = {
+		9CDFD5AECB022B405A37A6EB02944A7B /* WillowTreeReachability */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 014AFFCA677E25D13B2E68C4BA97495C /* Build configuration list for PBXNativeTarget "WillowTreeReachability" */;
+			buildConfigurationList = 41D9CE1B687564ABFFEF32ABD5752EBD /* Build configuration list for PBXNativeTarget "WillowTreeReachability" */;
 			buildPhases = (
-				B645EE37CECA8334B69BEBB95EFFE9BF /* Sources */,
-				1420DED628AADC3E61B4F73FAF8F8A83 /* Frameworks */,
-				8DA44BADCDF592A5088F9975CCC63124 /* Headers */,
+				CFB22F81858D16C320F3CA3BB4F2762B /* Sources */,
+				DE398447CAFDB6BF027D98377B7B0A6D /* Frameworks */,
+				9CA7FA53BD8ED8D7E23A186A736697C7 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -231,18 +220,18 @@
 			productReference = 94C2C4459A5C193BE5E20DFCE0A9DD16 /* WillowTreeReachability.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E0257EAC1CDCDD1FA8BA36F20D0C5BF2 /* Pods-ReachabilityExample */ = {
+		E83A2A76FE9786B61820B88BBAE6E7B9 /* Pods-ReachabilityExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2AB6D51CCA0DA2E1DAA14250E78CB4C4 /* Build configuration list for PBXNativeTarget "Pods-ReachabilityExample" */;
+			buildConfigurationList = 1B36B0659A1ECC85FB7D1AD63881D88B /* Build configuration list for PBXNativeTarget "Pods-ReachabilityExample" */;
 			buildPhases = (
-				74FC186C96D7966B13670F4A99CEDA7D /* Sources */,
-				72C255A348B91688AB5DB49DA0F68154 /* Frameworks */,
-				4E827A6186D4AC7F010F55ED93F30B97 /* Headers */,
+				65E6D9B3A075FE20AD9BC76F0F1F56F3 /* Sources */,
+				57948E3E91538B64A156764DB7F67450 /* Frameworks */,
+				CDCA29FCF7851EDF792C8C668B715610 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8883C66494E0771521F400058BC0DF77 /* PBXTargetDependency */,
+				BC5ADEE1FACF71727FBFB69AA380F428 /* PBXTargetDependency */,
 			);
 			name = "Pods-ReachabilityExample";
 			productName = "Pods-ReachabilityExample";
@@ -270,38 +259,38 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E0257EAC1CDCDD1FA8BA36F20D0C5BF2 /* Pods-ReachabilityExample */,
-				BDD7048FC733E5BD7D0A9C3A0B0F089B /* WillowTreeReachability */,
+				E83A2A76FE9786B61820B88BBAE6E7B9 /* Pods-ReachabilityExample */,
+				9CDFD5AECB022B405A37A6EB02944A7B /* WillowTreeReachability */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		74FC186C96D7966B13670F4A99CEDA7D /* Sources */ = {
+		65E6D9B3A075FE20AD9BC76F0F1F56F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68181E6030B2B92433F682EB6AFEFBAE /* Pods-ReachabilityExample-dummy.m in Sources */,
+				B1817786F0584966D34E635F2E77AE6B /* Pods-ReachabilityExample-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B645EE37CECA8334B69BEBB95EFFE9BF /* Sources */ = {
+		CFB22F81858D16C320F3CA3BB4F2762B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				488FFEF95E2A554C47522C5067DE637C /* Monitor.swift in Sources */,
-				BCC3F4CDCF4FF98E39B000AFADFEFADE /* WillowTreeReachability-dummy.m in Sources */,
+				BE20737C043331F5E517957794CDC4DE /* Monitor.swift in Sources */,
+				C69D3C933B211C1691C337D6C6502EDF /* WillowTreeReachability-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8883C66494E0771521F400058BC0DF77 /* PBXTargetDependency */ = {
+		BC5ADEE1FACF71727FBFB69AA380F428 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = WillowTreeReachability;
-			target = BDD7048FC733E5BD7D0A9C3A0B0F089B /* WillowTreeReachability */;
-			targetProxy = F1DB5603D9FB2E187A549AC5E49E348E /* PBXContainerItemProxy */;
+			target = 9CDFD5AECB022B405A37A6EB02944A7B /* WillowTreeReachability */;
+			targetProxy = 3725DEFDC7222B5F19FB0DB17BF5CBB5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -350,44 +339,9 @@
 			};
 			name = Debug;
 		};
-		02D1394CE5C3D879B44857FD7FBAE88B /* Release */ = {
+		0AD9A8AD07EBB404220C48BBE2818198 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8EECE5556CCFFFABE030F55188592C60 /* Pods-ReachabilityExample.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ReachabilityExample/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ReachabilityExample/Pods-ReachabilityExample.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ReachabilityExample;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		3D944CFCBCFEA2216CD050E88FDC25BF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE8FC61F781B2043E45EA999A4F101D6 /* Pods-ReachabilityExample.debug.xcconfig */;
+			baseConfigurationReference = 7D748CA7CCD131EEFDD111F2C8FA991F /* WillowTreeReachability.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -400,21 +354,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-ReachabilityExample/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/WillowTreeReachability/WillowTreeReachability-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WillowTreeReachability/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ReachabilityExample/Pods-ReachabilityExample.modulemap";
+				MODULEMAP_FILE = "Target Support Files/WillowTreeReachability/WillowTreeReachability.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ReachabilityExample;
+				PRODUCT_NAME = WillowTreeReachability;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -461,9 +412,9 @@
 			};
 			name = Release;
 		};
-		AB2AFA99B9C5601C94141A5AD2C6FF50 /* Debug */ = {
+		5D0489B2FCE8BE866B0A3AF0A40AEF2A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E190E609222C11C7CC874F1B49D3040 /* WillowTreeReachability.xcconfig */;
+			baseConfigurationReference = FE8FC61F781B2043E45EA999A4F101D6 /* Pods-ReachabilityExample.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -476,27 +427,30 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/WillowTreeReachability/WillowTreeReachability-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/WillowTreeReachability/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-ReachabilityExample/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/WillowTreeReachability/WillowTreeReachability.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ReachabilityExample/Pods-ReachabilityExample.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = WillowTreeReachability;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ReachabilityExample;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		BBAD2E6406AF181E0FE5AB2D5F1449C2 /* Release */ = {
+		E882E1190FD204BE5C3C840137E50F4B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E190E609222C11C7CC874F1B49D3040 /* WillowTreeReachability.xcconfig */;
+			baseConfigurationReference = 7D748CA7CCD131EEFDD111F2C8FA991F /* WillowTreeReachability.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -526,23 +480,49 @@
 			};
 			name = Release;
 		};
+		F941FDA9C94C8AF935D9401851BF77FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EECE5556CCFFFABE030F55188592C60 /* Pods-ReachabilityExample.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ReachabilityExample/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ReachabilityExample/Pods-ReachabilityExample.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ReachabilityExample;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		014AFFCA677E25D13B2E68C4BA97495C /* Build configuration list for PBXNativeTarget "WillowTreeReachability" */ = {
+		1B36B0659A1ECC85FB7D1AD63881D88B /* Build configuration list for PBXNativeTarget "Pods-ReachabilityExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB2AFA99B9C5601C94141A5AD2C6FF50 /* Debug */,
-				BBAD2E6406AF181E0FE5AB2D5F1449C2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2AB6D51CCA0DA2E1DAA14250E78CB4C4 /* Build configuration list for PBXNativeTarget "Pods-ReachabilityExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D944CFCBCFEA2216CD050E88FDC25BF /* Debug */,
-				02D1394CE5C3D879B44857FD7FBAE88B /* Release */,
+				5D0489B2FCE8BE866B0A3AF0A40AEF2A /* Debug */,
+				F941FDA9C94C8AF935D9401851BF77FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -552,6 +532,15 @@
 			buildConfigurations = (
 				015A368F878AC3E2CEAE21DDE8026304 /* Debug */,
 				44CDBB6D11DE06DB64D6268622BDC47E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41D9CE1B687564ABFFEF32ABD5752EBD /* Build configuration list for PBXNativeTarget "WillowTreeReachability" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AD9A8AD07EBB404220C48BBE2818198 /* Debug */,
+				E882E1190FD204BE5C3C840137E50F4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

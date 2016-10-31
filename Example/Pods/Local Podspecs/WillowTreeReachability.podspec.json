@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/willowtreeapps/WillowTreeReachability.git",
-    "tag": "2.0.0"
+    "tag": "2.0.1"
   },
   "source_files": [
     "Reachability",
