@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C8775791EF038D2008879E2 /* WillowTreeReachabilitytvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C8775771EF038D2008879E2 /* WillowTreeReachabilitytvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C87757D1EF038DB008879E2 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8AB78C1DC01CCE005BCBA7 /* Monitor.swift */; };
 		DC8AB77B1DC01C2F005BCBA7 /* WillowTreeReachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8AB7721DC01C2E005BCBA7 /* WillowTreeReachability.framework */; };
 		DC8AB7801DC01C2F005BCBA7 /* WillowTreeReachabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8AB77F1DC01C2F005BCBA7 /* WillowTreeReachabilityTests.swift */; };
 		DC8AB7821DC01C2F005BCBA7 /* WillowTreeReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DC8AB7741DC01C2E005BCBA7 /* WillowTreeReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,6 +27,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C87755B1EF03680008879E2 /* WillowTreeReachability-tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WillowTreeReachability-tvOS.h"; sourceTree = "<group>"; };
+		1C87755C1EF03680008879E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C8775691EF03841008879E2 /* WillowTreeReachabilitytvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WillowTreeReachabilitytvOS.h; sourceTree = "<group>"; };
+		1C87756A1EF03841008879E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C8775751EF038D2008879E2 /* WillowTreeReachabilitytvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WillowTreeReachabilitytvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C8775771EF038D2008879E2 /* WillowTreeReachabilitytvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WillowTreeReachabilitytvOS.h; sourceTree = "<group>"; };
+		1C8775781EF038D2008879E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC8AB7721DC01C2E005BCBA7 /* WillowTreeReachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WillowTreeReachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8AB7741DC01C2E005BCBA7 /* WillowTreeReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WillowTreeReachability.h; sourceTree = "<group>"; };
 		DC8AB7751DC01C2E005BCBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +45,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1C8775711EF038D2008879E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC8AB76E1DC01C2E005BCBA7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,6 +75,9 @@
 			children = (
 				DC8AB7731DC01C2E005BCBA7 /* WillowTreeReachability */,
 				DC8AB77E1DC01C2F005BCBA7 /* WillowTreeReachabilityTests */,
+				1C87755A1EF03680008879E2 /* WillowTreeReachability-tvOS */,
+				1C8775681EF03841008879E2 /* WillowTreeReachabilitytvOS */,
+				1C8775761EF038D2008879E2 /* WillowTreeReachabilitytvOS */,
 				0382BAE11B90B98900849DDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,8 +87,36 @@
 			children = (
 				DC8AB7721DC01C2E005BCBA7 /* WillowTreeReachability.framework */,
 				DC8AB77A1DC01C2F005BCBA7 /* WillowTreeReachabilityTests.xctest */,
+				1C8775751EF038D2008879E2 /* WillowTreeReachabilitytvOS.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1C87755A1EF03680008879E2 /* WillowTreeReachability-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				1C87755B1EF03680008879E2 /* WillowTreeReachability-tvOS.h */,
+				1C87755C1EF03680008879E2 /* Info.plist */,
+			);
+			path = "WillowTreeReachability-tvOS";
+			sourceTree = "<group>";
+		};
+		1C8775681EF03841008879E2 /* WillowTreeReachabilitytvOS */ = {
+			isa = PBXGroup;
+			children = (
+				1C8775691EF03841008879E2 /* WillowTreeReachabilitytvOS.h */,
+				1C87756A1EF03841008879E2 /* Info.plist */,
+			);
+			path = WillowTreeReachabilitytvOS;
+			sourceTree = "<group>";
+		};
+		1C8775761EF038D2008879E2 /* WillowTreeReachabilitytvOS */ = {
+			isa = PBXGroup;
+			children = (
+				1C8775771EF038D2008879E2 /* WillowTreeReachabilitytvOS.h */,
+				1C8775781EF038D2008879E2 /* Info.plist */,
+			);
+			path = WillowTreeReachabilitytvOS;
 			sourceTree = "<group>";
 		};
 		DC8AB7731DC01C2E005BCBA7 /* WillowTreeReachability */ = {
@@ -103,6 +150,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		1C8775721EF038D2008879E2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C8775791EF038D2008879E2 /* WillowTreeReachabilitytvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC8AB76F1DC01C2E005BCBA7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,6 +169,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1C8775741EF038D2008879E2 /* WillowTreeReachabilitytvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C87757A1EF038D2008879E2 /* Build configuration list for PBXNativeTarget "WillowTreeReachabilitytvOS" */;
+			buildPhases = (
+				1C8775701EF038D2008879E2 /* Sources */,
+				1C8775711EF038D2008879E2 /* Frameworks */,
+				1C8775721EF038D2008879E2 /* Headers */,
+				1C8775731EF038D2008879E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WillowTreeReachabilitytvOS;
+			productName = WillowTreeReachabilitytvOS;
+			productReference = 1C8775751EF038D2008879E2 /* WillowTreeReachabilitytvOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		DC8AB7711DC01C2E005BCBA7 /* WillowTreeReachability */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC8AB7831DC01C2F005BCBA7 /* Build configuration list for PBXNativeTarget "WillowTreeReachability" */;
@@ -160,6 +233,10 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "WillowTree, Inc.";
 				TargetAttributes = {
+					1C8775741EF038D2008879E2 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 					DC8AB7711DC01C2E005BCBA7 = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0810;
@@ -186,11 +263,19 @@
 			targets = (
 				DC8AB7711DC01C2E005BCBA7 /* WillowTreeReachability */,
 				DC8AB7791DC01C2F005BCBA7 /* WillowTreeReachabilityTests */,
+				1C8775741EF038D2008879E2 /* WillowTreeReachabilitytvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1C8775731EF038D2008879E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC8AB7701DC01C2E005BCBA7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,6 +293,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1C8775701EF038D2008879E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C87757D1EF038DB008879E2 /* Monitor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC8AB76D1DC01C2E005BCBA7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,6 +417,61 @@
 			};
 			name = Release;
 		};
+		1C87757B1EF038D2008879E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WillowTreeReachabilitytvOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.WillowTreeReachabilitytvOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1C87757C1EF038D2008879E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WillowTreeReachabilitytvOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.willowtreeapps.WillowTreeReachabilitytvOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		DC8AB7841DC01C2F005BCBA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -424,6 +572,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1C87757A1EF038D2008879E2 /* Build configuration list for PBXNativeTarget "WillowTreeReachabilitytvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C87757B1EF038D2008879E2 /* Debug */,
+				1C87757C1EF038D2008879E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		DC8AB7831DC01C2F005BCBA7 /* Build configuration list for PBXNativeTarget "WillowTreeReachability" */ = {
 			isa = XCConfigurationList;
