@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WillowTreeReachability"
-  s.version      = "2.0.2"
+  s.version      = "2.0.4"
   s.summary      = "Simple Swift class for monitoring network reachability."
 
   s.description  = <<-DESC
@@ -56,8 +56,8 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "8.0"
-  s.platform     = :tvos, "9.0"
+  s.ios.deployment_target     = "8.0"
+  s.tvos.deployment_target     = "9.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "8.0"
@@ -71,7 +71,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/willowtreeapps/WillowTreeReachability.git", :tag => "2.0.2" }
+  s.source       = { :git => "https://github.com/willowtreeapps/WillowTreeReachability.git", :tag => "2.0.4" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
